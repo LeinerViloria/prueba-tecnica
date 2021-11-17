@@ -25,4 +25,27 @@ class api_propietarios {
             echo json_encode(array("mensaje"=>"No hay elementos registrados"));
         }
     }
+
+    function getJson(){
+        $propietario = new propietario();
+        
+        $propietarios = array();
+        $propietarios["lista"]=array();
+
+        $res = $propietario->propietariosConVariasMascotas();
+
+        if($res->rowCount()){
+            while($row = $res->fetch(PDO::FETCH_ASSOC)){
+                $item = array(
+                    'id'=>$row['id'],
+                    'nombre'=>$row['nombre'],
+                    'cantidad'=>$row['cantidad']
+                );
+                array_push($propietarios['lista'],$item);
+            }
+            return json_encode($propietarios);
+        }else{
+            echo json_encode(array("mensaje"=>"No hay elementos registrados"));
+        }
+    }
 }
