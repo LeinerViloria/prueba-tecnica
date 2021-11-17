@@ -11,7 +11,9 @@ $texto = "";
 for($i=desde; $i<=hasta; $i++){
     $palabra = palabra_segun_divisor(hasta, $i);
     if(!empty($palabra)){
-        $texto.="<p>El numero <strong>$i</strong> tiene la palabra <strong>".$palabra."</strong></p>";
+        $texto.="<p>--> <strong>".$palabra."</strong></p>";
+    }else{
+        $texto.="<p>--> <strong>".$i."</strong></p>";
     }
 }
 
